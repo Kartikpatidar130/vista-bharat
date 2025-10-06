@@ -37,7 +37,7 @@ const Section2 = ({ box, scroll_data }) => {
   useEffect(() => {
     const fetchData = async (req, res) => {
       try {
-        fetch(`http://192.168.43.69:8000/api/dest?name=${box.name}`, {
+        fetch(`https://bharatvista.onrender.com/api/dest?name=${box.name}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
