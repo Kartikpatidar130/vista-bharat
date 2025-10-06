@@ -48,8 +48,8 @@ function App() {
         })
         .then((value) => {
           // console.log(value.category[0]);
-          // setScroll(value.category[0]);
-          // setScrollContain(value.category[0]);
+          setScroll(value.category[0]);
+          setScrollContain(value.category[0]);
         });
       await fetch(
         "https://bharatvista.onrender.com/api?topic_category=states&type=place",

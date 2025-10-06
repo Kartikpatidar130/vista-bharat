@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
     const [subcategory , setSubcategory] = useState([])
     const {Scroll_call} = useContext(ImageContext)
       const { Image_data } = useContext(ImageContext);
-      // console.log(scroll_data)
+      console.log(scroll_data)
    
     useEffect(() => {
           if (!scroll_data?.topic_category || !scroll_data?.type) return;

@@ -169,7 +169,7 @@ const Navbar = ({ handle, Style_nav, active }) => {
       <img className="icon_menu" src={icon4} alt="" onClick={toggleDisplay} />
       <div className="logo">
         <img src={img1} alt="logo" />
-        <p> Bharat vista</p>
+        <p> Bharat view</p>
       </div>
       <ul className="ul_list">
         <li className="list">
