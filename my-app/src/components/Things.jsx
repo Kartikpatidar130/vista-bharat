@@ -18,7 +18,7 @@ const Tourism = ({ Style_nav }) => {
   useEffect(() => {
     const fetchtourism = async () => {
       try {
-        await fetch("http://192.168.43.69:8000/api/topic_category?type=thing", {
+        await fetch("https://bharatvista.onrender.com/api/topic_category?type=thing", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
