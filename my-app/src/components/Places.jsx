@@ -24,7 +24,7 @@ const Places = ({ Style_nav }) => {
     // })
     const fetchtourism = async () => {
       try{
-      await fetch("http://192.168.43.69:8000/api/topic_category?type=place", {
+      await fetch("https://bharatvista.onrender.com/api/topic_category?type=place", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
