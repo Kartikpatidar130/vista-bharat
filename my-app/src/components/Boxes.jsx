@@ -14,7 +14,7 @@ const Boxes = ({ props, Style_nav }) => {
    
     const fetchData = async () => {
       await fetch(
-        `http://192.168.43.69:8000/api?topic_category=${props.topic_category}&type=${props.type}`,
+        `https://bharatvista.onrender.com/api?topic_category=${props.topic_category}&type=${props.type}`,
         {
        method : "GET",
        headers: {
