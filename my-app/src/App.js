@@ -40,7 +40,7 @@ function App() {
     const fetchtourism = async () => {
       try{
       await fetch(
-        "http://192.168.43.69:8000/api/topic_category?type=place",
+        "https://bharatvista.onrender.com/api/topic_category?type=place",
         options
       )
         .then((res) => {
@@ -52,7 +52,7 @@ function App() {
           // setScrollContain(value.category[0]);
         });
       await fetch(
-        "http://192.168.43.69:8000/api?topic_category=states&type=place",
+        "https://bharatvista.onrender.com/api?topic_category=states&type=place",
         options
       )
         .then((Response) => {
