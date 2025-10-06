@@ -1,0 +1,57 @@
+.container{
+    /* border:2px solid red; */
+    margin:0px;
+    padding:8px;
+}
+.container h1{
+      width:100%;
+      font-family: "Nunito", sans-serif;
+      text-align:center;
+      display:none;
+}
+.tourism_list{
+    display:flex;
+    justify-content : center;
+    align-items:center;
+    list-style :none;
+    /* border:2px solid red; */
+    margin:0px 20px;
+    overflow-x:auto;
+    scroll-behavior: smooth;
+      
+    
+}
+.list1 a{
+    text-decoration : none;
+    color: black ;
+    font-family: "Nunito", sans-serif;
+    font-weight:bold;
+    font-size:15px;
+    /* background-color:rgba(211, 211, 211, 1); */
+    padding :15px 15px; 
+    margin :10px 9px; 
+    border-radius: 30px;
+    background-color:rgba(211, 211, 211, 0.5);
+    display :inline-block;
+   
+}
+.list1{
+    transition: transform 0.3s ease;
+}
+
+.list1 :active {
+   transform : scale(0.9)
+}
+
+
+
+  @media only screen and (max-width: 650px) {
+  .tourism_list {
+    /* justify-content: flex-start; */
+  }
+
+  .list1 a{
+       font-size:14px;
+       padding :10px 10px; 
+  }
+}
