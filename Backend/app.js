@@ -5,6 +5,9 @@ const cors = require("cors");
 const router = require("./routes/index");
 const path = require("path");
 const connect = require("./db/connect");
+const cookieParser = require("cookie-parser");
+
+
 
 app.use(
   cors({
@@ -12,41 +15,16 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
-const allowedIPs = ["127.0.0.1" , "192.168.43.69"]; 
-app.use((req,res,next)=>{
-  let clientIp = req.ip ;
-  if (clientIp === "::1") {
-    clientIp = "127.0.0.1";
-  }
-  if (clientIp.startsWith("::ffff:")) {
-    clientIp = clientIp.replace("::ffff:", "");
-  }
-
-//  const clientIp = req.ip ;
-//  console.log(clientIp)
- if(!allowedIPs.includes(clientIp)){
-    return res.status(403).send("Forbidden: Your IP is not allowed");
- }
- next()
-})
-
+app.set("view engine", "ejs");
+app.use(cookieParser());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-// app.post("/login", tokenGenerate);
+
 app.use("/api", router);
 
-// ,tokenVerification
-
-app.set("view engine", "ejs");
-
-// app.use(function(req,res,next){
-//   next()
-// })
 const start = async () => {
-  // const PORT =  8000; 
   const PORT = process.env.PORT || 8000; 
   try {
     await connect(process.env.MONGO_URL);

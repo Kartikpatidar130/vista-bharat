@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
+
 const multer = require("multer");
 const overall = require("../controllers/overall");
 const { Category, subCategory } = require("../models/overall");
 const destination_store = require('../controllers/destination')
 const dest = require('../models/destination')
+const verifyToken = require("../middleware/jwtauthmiddleware")
+const generatedToken = require("../controllers/generatedToken")
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -16,16 +19,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
-router.post("/destination",upload.single("dest_img"), destination_store)
-router.post("/overall", upload.single("image"), overall);
-
-router.get("/form/dest" , (req,res)=>{
-   res.render("uploaddest")
-})
-router.get("/form/place", (req, res) => {
-  res.render("index");
-});
 
 router.get("/place", (req, res) => {
   res.json({ message: "Places", user: req.user });
@@ -79,6 +72,21 @@ router.get("/subcategory", async (req, res) => {
   } catch (err) {
     console.error(err);
   }
+});
+
+router.get("/loginpage",(req,res)=>{
+  res.render("login")
+})
+router.post("/login" , generatedToken)
+
+router.post("/destination", verifyToken , upload.single("dest_img"), destination_store)
+router.post("/overall", verifyToken , upload.single("image"), overall);
+
+router.get("/form/dest" ,verifyToken , (req,res)=>{
+   res.render("uploaddest")
+})
+router.get("/form/place",verifyToken , (req, res) => {
+  res.render("index");
 });
 
 module.exports = router;
