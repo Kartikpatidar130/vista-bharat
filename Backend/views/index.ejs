@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Form UI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        input[type="text"],
+        select,
+        input[type="file"] {
+            margin-top: 6px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        select:focus,
+        input[type="file"]:focus {
+            border-color: #ff4d4f;
+            box-shadow: 0 0 5px rgba(255, 77, 79, 0.3);
+        }
+
+        input[type="text"][style] {
+            height: auto;
+            padding: 12px;
+        }
+
+        textarea:focus {
+            border-color: #ff4d4f;
+            box-shadow: 0 0 5px rgba(255, 77, 79, 0.3);
+            outline: none;
+
+        }
+
+        textarea {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #ff4d4f;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #e03e3e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="/api/overall" method="POST" enctype="multipart/form-data">
+        <h2>Admin Panel</h2>
+
+        <label>
+            Type
+            <select name="type" id="type">
+                <option value="place">Place</option>
+                <option value="tourism">Tourism</option>
+                <option value="thing">Thing</option>
+            </select>
+        </label>
+
+        <label>
+            Topic Category
+            <select name="topic_category" id="topic_category"></select>
+        </label>
+
+        <label>
+            Name
+            <input type="text" name="name">
+        </label>
+
+        <label>
+            Image
+            <input type="file" name="image">
+        </label>
+
+        <label>
+            Introduction
+            <textarea name="introduction" style="width:100%; height:100px; font-size:16px; "></textarea>
+        </label>
+
+        <label>
+            Lifestyle
+            <textarea name="lifestyle" style="width:100%; height:100px; font-size:16px;"></textarea>
+        </label>
+
+        <label>
+            History
+            <textarea type="text" name="history" style="width:100%; height:100px; font-size:16px;"></textarea>
+        </label>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const places = [ "Cities","States","Beaches","Hill Stations","Wildlife & National Parks","Religious Sites","Heritage Sites"]
+        const tourism = ["Cultural", "Adventure", "Nature", "Spiritual","Wildlife", "Rural", "valley"];
+       const thing = [
+  "Yoga & Meditation ",
+  "Attend Local Festivals",
+  "Culinary Tours / Food Tasting",
+  "Eco / Sustainable Activities",
+  "Scuba Diving & Water Sports",
+  "Paragliding & Adventure Sports",
+  "Cultural Workshops",
+  "Photography Tours"
+];
+        const topic_category = document.getElementById('topic_category');
+        const typeSelect = document.getElementById("type")
+
+        const update_topic_category = (type) => {
+            let inner_topic_category = [];
+            if (type === "place") {
+                inner_topic_category = places
+            } else if (type === "tourism") {
+                inner_topic_category = tourism
+            } else if (type === "thing") {
+                inner_topic_category = thing
+            } else (
+                alert("Please select first type")
+            )
+
+            topic_category.innerHTML = ""
+
+            inner_topic_category.forEach((ele) => {
+                let option = document.createElement("option");
+                option.textContent = ele;
+                option.value = ele.toLowerCase();
+                topic_category.appendChild(option);
+            });
+        }
+
+        update_topic_category(typeSelect.value)
+
+        typeSelect.addEventListener("change", (e) => {
+            update_topic_category(e.target.value)
+        })
+
+    </script>
+
+</body>
+
+</html>

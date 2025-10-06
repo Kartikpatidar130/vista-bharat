@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .form-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px 25px;
+  border: 2px solid #4CAF50;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-container h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #2E7D32;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76,175,80,0.3);
+  outline: none;
+}
+
+.submit-btn {
+  background: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #45a049;
+}
+
+    </style>
+</head>
+
+<body>
+  <form action="/api/destination" method="POST" class="form-container" enctype="multipart/form-data">
+  <h3>Destination Fill-up</h3>
+
+  <div class="form-group">
+    <label for="dest_id1">Name</label>
+    <input type="text" name="name" id="dest_id1" placeholder="Enter name">
+  </div>
+
+  <div class="form-group">
+    <label for="dest_id4">Destination Name</label>
+    <input type="text" name="dest_name" id="dest_id4" placeholder="Enter destination name">
+  </div>
+
+  <div class="form-group">
+    <label for="dest_id3">Image URL</label>
+    <input type="file" name="dest_img" id="dest_id3">
+  </div>
+
+  <div class="form-group">
+    <label for="dest_id2">Information</label>
+    <textarea name="dest_info" id="dest_id2" rows="4" placeholder="Write some details..."></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">Submit</button>
+</form>
+
+</body>
+
+</html>
