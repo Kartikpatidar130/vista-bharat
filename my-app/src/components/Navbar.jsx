@@ -127,7 +127,7 @@ const Navbar = ({ handle, Style_nav, active }) => {
       // console.log(value)
       // console.log(search)
       try{
-      await fetch(`http://192.168.43.69:8000/api/subcategory?name=${value}`)
+      await fetch(`https://bharatvista.onrender.com/api/subcategory?name=${value}`)
         .then((Response) => {
           // console.log(Response.ok);
           // console.log(Response.status);
