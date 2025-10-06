@@ -13,7 +13,7 @@ import { NavLink } from 'react-router-dom';
           if (!scroll_data?.topic_category || !scroll_data?.type) return;
           const fetchData = async () => {
             await fetch(
-              `http://192.168.43.69:8000/api?topic_category=${scroll_data.topic_category}&type=${scroll_data.type}`
+              `https://bharatvista.onrender.com/api?topic_category=${scroll_data.topic_category}&type=${scroll_data.type}`
             )
               .then((res) => {
                 return res.json();
